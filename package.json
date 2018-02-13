@@ -1,0 +1,28 @@
+{
+  "name": "new_module",
+  "version": "1.0.0",
+  "description": "Belajar Nodejs: Membuat Modul",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "belajarnodejs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/indraarianggi/learn-nodejs.git"
+  },
+  "keywords": [
+    "belajar",
+    "node",
+    "indra"
+  ],
+  "author": "Indra Arianggi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/indraarianggi/learn-nodejs/issues"
+  },
+  "homepage": "https://github.com/indraarianggi/learn-nodejs#readme"
+}
