@@ -3,7 +3,10 @@
  */
 
 // import module
-var ctr = require('./count');
+var stuff = require('./stuff');
 
 
-console.log(ctr(["indra", "arianggi", "suryaatmaja"]));
+console.log(stuff.counter(["indra", "arianggi", "suryaatmaja"]));
+console.log(stuff.adder(3, 4));
+console.log(stuff.subtract(10, 5));
+console.log(`Value of pi is ${stuff.pi}`);
