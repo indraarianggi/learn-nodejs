@@ -1,36 +1,23 @@
 /**
- * Custom Event
+ * Create a Server
  */
 
 // import module
-var fs = require('fs');
-
-/**
- Synchronous process
- 
-// Create directory
-fs.mkdirSync('assets');
-
-// Delete directory
-fs.rmdirSync('assets');
-
-*/
+var http = require('http');
 
 
-/**
- Asynchronous process
-*/
+var server = http.createServer(function(req, res) {
+    // get url request
+    console.log("request was made: " + req.url);
 
-// Create directory
-fs.mkdir('assets', function() {
-    fs.readFile('readMe.txt', 'utf8', function(err, data) {
-        fs.writeFile('./assets/writeMe.txt', data + " [output of writing file]");
-    });
+    // response header
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+
+    // send response to teh client
+    res.end("Hello World!");
 });
 
+// set listening port
+server.listen(3000, '127.0.0.1');
 
-// Delete a file there is in the folder first
-fs.unlink('./assets/writeMe.txt', function() {
-    // then delete the folder/directory
-    fs.rmdir('assets');
-});
+console.log("Listening to port 3000");
