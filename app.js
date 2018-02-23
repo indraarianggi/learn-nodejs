@@ -1,23 +1,20 @@
 /**
- * Create a Server
+ * Readable Streams
  */
 
 // import module
-var http = require('http');
+var fs = require('fs');
 
 
-var server = http.createServer(function(req, res) {
-    // get url request
-    console.log("request was made: " + req.url);
+var myReadStream = fs.createReadStream(__dirname + '/readMe.txt', 'utf8'); // 'utf8' => second parameter to serve the data in string
 
-    // response header
-    res.writeHead(200, {'Content-Type': 'text/plain'});
+var myWriteStream = fs.createWriteStream(__dirname + '/writeMe.txt');
 
-    // send response to teh client
-    res.end("Hello World!");
+
+// First read data from readMe.txt, (*if event 'data'/data is received -> fire this function)
+myReadStream.on('data', function(chunk) {
+    console.log("new chunk received: ");
+    
+    // then write data received to writeMe.txt
+    myWriteStream.write(chunk);
 });
-
-// set listening port
-server.listen(3000, '127.0.0.1');
-
-console.log("Listening to port 3000");
