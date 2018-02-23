@@ -1,26 +1,43 @@
 /**
- * Readable Streams
+ * Basic Routing
  */
 
 // import module
 var http = require('http');
-
+var fs = require('fs');
 
 
 var server = http.createServer(function(req, res) {
+
     console.log('request was made: ' + req.url);
 
-    res.writeHead(200, {'Content-Type': 'application/json'});
+    // basic routing
+    if (req.url === '/home' || req.url === '/') {
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        fs.createReadStream(__dirname + '/index.html').pipe(res);
+    } else if (req.url === '/contact') {
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        fs.createReadStream(__dirname + '/contact.html').pipe(res);
+    } else if (req.url === '/api/users') {
+        var users = [
+            {
+                name: 'Indra',
+                job: 'Programmer',
+                age: 22
+            },
+            {
+                name: 'Arianggi',
+                job: 'UI/UX Designer',
+                age: 22
+            }
+        ]
 
-    // Prepare json data
-    var myObj = {
-        name: 'Indra',
-        job: 'Programmer',
-        age: 22
+        res.writeHead(200, {'Content-Type': 'application/json'});
+        res.end(JSON.stringify(users));
+    } else {
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        fs.createReadStream(__dirname + '/404.html').pipe(res);
     }
-
-    // Send json as response to client
-    res.end(JSON.stringify(myObj));
 
 });
 
