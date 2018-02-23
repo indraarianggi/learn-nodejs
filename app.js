@@ -4,19 +4,23 @@
 
 // import module
 var http = require('http');
-var fs = require('fs');
+
 
 
 var server = http.createServer(function(req, res) {
     console.log('request was made: ' + req.url);
 
-    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.writeHead(200, {'Content-Type': 'application/json'});
 
-    var myReadStream = fs.createReadStream(__dirname + '/index.html');
+    // Prepare json data
+    var myObj = {
+        name: 'Indra',
+        job: 'Programmer',
+        age: 22
+    }
 
-    // piping the operations
-    // read index.html, then send the data as response to the client
-    myReadStream.pipe(res);
+    // Send json as response to client
+    res.end(JSON.stringify(myObj));
 
 });
 
