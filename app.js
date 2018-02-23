@@ -3,18 +3,23 @@
  */
 
 // import module
+var http = require('http');
 var fs = require('fs');
 
 
-var myReadStream = fs.createReadStream(__dirname + '/readMe.txt', 'utf8'); // 'utf8' => second parameter to serve the data in string
+var server = http.createServer(function(req, res) {
+    console.log('request was made: ' + req.url);
 
-var myWriteStream = fs.createWriteStream(__dirname + '/writeMe.txt');
+    res.writeHead(200, {'Content-Type': 'text/plain'});
 
+    var myReadStream = fs.createReadStream(__dirname + '/readMe.txt', 'utf8');
 
-// First read data from readMe.txt, (*if event 'data'/data is received -> fire this function)
-myReadStream.on('data', function(chunk) {
-    console.log("new chunk received: ");
+    // piping the operations
+    // read readMe.txt, then send the data as response to the client
+    myReadStream.pipe(res);
     
-    // then write data received to writeMe.txt
-    myWriteStream.write(chunk);
 });
+
+
+server.listen(3000, '127.0.0.1');
+console.log('Listening to port 3000');
