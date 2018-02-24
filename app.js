@@ -6,6 +6,8 @@ var express = require('express');
 
 var app = express();
 
+// tell express that use ejs as view engine
+app.set('view engine', 'ejs');
 
 // routing with express
 app.get('/', function(req, res) {
@@ -18,7 +20,11 @@ app.get('/contact', function(req, res) {
 
 // route params
 app.get('/profile/:name', function(req, res) {
-    res.send('You requested to see profile with the name of ' + req.params.name);
+    // prepare object data
+    var moreData = {age: 22, job: 'Programmer'};
+
+    // render view and pass the data to view (profile.ejs)
+    res.render('profile', {person: req.params.name, data: moreData});
 });
 
 // set port
