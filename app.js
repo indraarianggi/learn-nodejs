@@ -1,46 +1,25 @@
 /**
- * Basic Routing
+ * Express
  */
 
-// import module
-var http = require('http');
-var fs = require('fs');
+var express = require('express');
+
+var app = express();
 
 
-var server = http.createServer(function(req, res) {
-
-    console.log('request was made: ' + req.url);
-
-    // basic routing
-    if (req.url === '/home' || req.url === '/') {
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        fs.createReadStream(__dirname + '/index.html').pipe(res);
-    } else if (req.url === '/contact-us') {
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        fs.createReadStream(__dirname + '/contact.html').pipe(res);
-    } else if (req.url === '/api/users') {
-        var users = [
-            {
-                name: 'Indra',
-                job: 'Programmer',
-                age: 22
-            },
-            {
-                name: 'Arianggi',
-                job: 'UI/UX Designer',
-                age: 22
-            }
-        ]
-
-        res.writeHead(200, {'Content-Type': 'application/json'});
-        res.end(JSON.stringify(users));
-    } else {
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        fs.createReadStream(__dirname + '/404.html').pipe(res);
-    }
-
+// routing with express
+app.get('/', function(req, res) {
+    res.send('Hello World!');
 });
 
+app.get('/contact', function(req, res) {
+    res.send('Find me on linkedIn');
+});
 
-server.listen(3000, '127.0.0.1');
-console.log('Listening to port 3000');
+// route params
+app.get('/profile/:name', function(req, res) {
+    res.send('You requested to see profile with the name of ' + req.params.name);
+});
+
+// set port
+app.listen(3000);
