@@ -1,0 +1,29 @@
+{
+  "name": "learn-nodejs",
+  "version": "1.0.0",
+  "description": "Learn Node.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/indraarianggi/learn-nodejs.git"
+  },
+  "keywords": [
+    "learn",
+    "nodejs",
+    "npm",
+    "express",
+    "indraarianggi"
+  ],
+  "author": "Indra Arianggi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/indraarianggi/learn-nodejs/issues"
+  },
+  "homepage": "https://github.com/indraarianggi/learn-nodejs#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
