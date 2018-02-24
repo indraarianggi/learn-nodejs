@@ -20,7 +20,10 @@ app.get('/', function(req, res) {
 });
 
 app.get('/contact', function(req, res) {
-    res.render('contact');
+    // get query strings => try access http://127.0.0.1:3000/contact?person=Indra%20Arianggi&dept=Technology
+    console.log( req.query );
+
+    res.render('contact', { qs : req.query });
 });
 
 // route params
