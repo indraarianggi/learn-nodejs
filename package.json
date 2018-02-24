@@ -25,5 +25,8 @@
   "homepage": "https://github.com/indraarianggi/learn-nodejs#readme",
   "dependencies": {
     "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.15.1"
   }
 }
