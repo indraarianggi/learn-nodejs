@@ -9,6 +9,11 @@ var app = express();
 // tell express that use ejs as view engine
 app.set('view engine', 'ejs');
 
+
+// use middleware to serve static file
+app.use('/assets', express.static('assets'));
+
+
 // routing with express
 app.get('/', function(req, res) {
     res.render('index');
