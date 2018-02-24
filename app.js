@@ -11,11 +11,11 @@ app.set('view engine', 'ejs');
 
 // routing with express
 app.get('/', function(req, res) {
-    res.send('Hello World!');
+    res.render('index');
 });
 
 app.get('/contact', function(req, res) {
-    res.send('Find me on linkedIn');
+    res.render('contact');
 });
 
 // route params

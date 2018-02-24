@@ -20,42 +20,19 @@
                  letter-spacing: 2px;
                  text-align: center;
              }
-
-             h2 {
-                 font-size: 30px;
-                 text-transform: uppercase;
-                 letter-spacing: 2px;
-                 text-align: center;
-             }
  
-             p, li {
+             p {
                  font-size: 16px;
                  text-align: center;
              }
          </style>
      </head>
      <body>
-         
+
          <!-- Include (insert) Another View -->
          <% include main/navbar.ejs %>
 
-         <!-- Get data passed from app.js -->
-         <h1>Welcome to the profile of <%= person %></h1>
-         <p>
-             <strong>Age:</strong> <%= data.age %>
-         </p>
-         <p>
-            <strong>Job:</strong> <%= data.job %>
-        </p>
-
-        <h2>
-            <ul>
-                <% data.hobbies.forEach(function(item) { %>
-
-                    <li><%= item %></li>
-
-                <% }); %>
-            </ul>
-        </h2>
+         <h1>Find Me on LinkedIn</h1>
+         <p><a href="https://www.linkedin.com/in/indra-arianggi-suryaatmaja-b35707132">Indra Arianggi Suryaatmaja</a></p>
      </body>
  </html> 
