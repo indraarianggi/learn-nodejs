@@ -17,7 +17,7 @@
          <h1>Contact <%= qs.person %></h1>
          <p>From <%= qs.dept %> Department</p>
 
-         <form>
+         <form action="/contact" method="POST">
              <label for="who">Who do you want to cantact ?</label>
              <input type="text" name="who" value="<%= qs.person %>">
              <label for="department">Which department ?</label>
