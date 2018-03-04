@@ -1,0 +1,23 @@
+{
+  "name": "learn-nodejs-medium",
+  "version": "1.0.0",
+  "description": "NodeJs tutorials from Medium article by Victor Ofoegbu",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/indraarianggi/learn-nodejs.git"
+  },
+  "keywords": [
+    "nodejs",
+    "medium"
+  ],
+  "author": "Indra Arianggi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/indraarianggi/learn-nodejs/issues"
+  },
+  "homepage": "https://github.com/indraarianggi/learn-nodejs#readme"
+}
