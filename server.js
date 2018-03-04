@@ -1,30 +1,27 @@
-const http = require('http');
-const url = require('url');
+const express = require('express');
 
-var makeServer = (request, response) => {
-    let path = url.parse(request.url).pathname;
-    console.log(path);
+var server = express();
 
-    // basic routing
-    if (path==='/') {
-        response.writeHead(200, {'Content-Type':'text/plain'});
-        response.write('Hello World!');
-    } else if (path==='/about') {
-        response.writeHead(200, {'Content-Type':'text/plain'});
-        response.write('About Page');
-    } else if (path==='/blog') {
-        response.writeHead(200, {'Content-Type':'text/plain'});
-        response.write('Blog Page');
-    } else {
-        response.writeHead(200, {'Content-Type':'text/plain'});
-        response.write('404, Page Not Found');
-    }
+server.set('port', process.env.PORT || 3000);
 
-    response.end();
-}
+// basic routing
+server.get('/', (request, response) => {
+    response.send('Home Page');
+});
 
-var server = http.createServer(makeServer);
+server.get('/about', (request, response) => {
+    response.send('About Page');
+});
 
+
+// express error handling middleware
+server.use((request, response) => {
+    response.type('text/plain');
+    response.status(505);
+    response.send('Error Page');
+})
+
+// binding to a port
 server.listen(3000, () => {
-    console.log('Node server created at port 3000');
+    console.log('Express server started at port 3000');
 });
